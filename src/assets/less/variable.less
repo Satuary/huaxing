@@ -1,0 +1,102 @@
+@fontColor: #121212;
+@linkColor: #fff;
+
+@bodyBg: #f5f5f5;
+@bgRed: #cc262a;
+@bgWhite: #fff;
+@bgBlack: #121212;
+
+@moreRedBg: #E60012;
+@moreBlackBg: #121212;
+
+@titleLine: #e60012;
+
+@navBrandWidth: 350px;
+@navBrandWidth_2k: 450px;
+@navHeight: 120px;
+@navHeight_md: 100px;
+@navHeight_sm: 70px;
+@navHeight_2k: 200px;
+
+@navItemWidth: 180px;
+@navItemWidth_2k: 300px;
+@navItemWidth_sm: 150px;
+
+
+/* - - - - - - -
+    rect_border
+  - - - - - - -  */
+@border: 15px;
+@border_sm: 8px;
+
+
+/* - - - - - - -
+      about
+  - - - - - - -  */
+@aboutTop: 40px;
+@aboutLeft: 40px;
+@aboutImgWidth: 37%;
+@aboutImgWidth_2k: 40%;
+@aboutContentPadTop: 12%;
+
+
+
+/* - - - - - - -
+      map
+  - - - - - - -  */
+@mapPadTop:6%;
+@mapPadLeft:7%;
+
+
+
+/* - - - - - - -
+      news
+  - - - - - - -  */
+@newsBorderWidth: 22%;
+@newsBorderHeight: 40%;
+@newsMarTop: 13%;
+@newsPadTop: 15%;
+@newsPadBottom: 17%;
+@newsMarTop_md: 35%;
+@newsMarTop_sm: 30%;
+
+
+/* - - - - - - -
+      menu
+  - - - - - - -  */
+@menuPadTop: 12%;
+@menuPadBottom: 5%;
+@menubgPos: 78%;
+
+
+
+/* - - - - -
+  公共函数
+ - - - - - -*/
+
+.keyframes (@prefix,@name,@content) when (@prefix=def) {
+  @keyframes @name {
+    @content();
+  }
+}
+.keyframes (@prefix,@name,@content) when (@prefix=moz) {
+  @-moz-keyframes @name {
+    @content();
+  }
+}
+.keyframes (@prefix,@name,@content) when (@prefix=o) {
+  @-o-keyframes @name {
+    @content();
+  }
+}
+.keyframes (@prefix,@name,@content) when (@prefix=webkit) {
+  @-webkit-keyframes  @name{
+    @content();
+  }
+}
+.keyframes (@prefix,@name,@content) when (@prefix=all) {
+  .keyframes(moz,@name,@content);
+  .keyframes(o,@name,@content);
+  .keyframes(webkit,@name,@content);
+  .keyframes(def,@name,@content);
+}
