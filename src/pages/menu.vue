@@ -3,9 +3,7 @@
 
     <!-- 文字-->
     <!-- 文字2去221-->
-
-
-
+    
       <div class="col-lg-12 col-md-12 bannerTitle">
         <div class="content ">
           <div class="title_en">Chrisly Cafe</div>
