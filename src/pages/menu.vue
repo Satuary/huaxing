@@ -1,6 +1,11 @@
 <template>
   <div id="huaxingMenu">
     <!-- 文字-->
+<<<<<<< HEAD
+=======
+    <!-- 文字2去2211121212-->
+
+>>>>>>> d514e3f785c43aca191738ee62ad1981ad6fd9d1
       <div class="col-lg-12 col-md-12 bannerTitle">
         <div class="content ">
           <div class="title_en">Chrisly Cafe</div>
