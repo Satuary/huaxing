@@ -2,7 +2,6 @@
   <div id="huaxingMenu">
 
     <!-- 文字-->
-    <!-- 文字-->
 
 
 
