@@ -10,21 +10,28 @@
   export default {
     components:{
       'nav-header': nav
+    },
+    mounted() {
+      console.log("★ 華星冰室 ★\n" +
+        "用心做好炒蛋、奶茶\n" +
+        "冰室不賣冰，茶餐廳不供飯，是華星冰室的吸睛賣點。只提供最簡單的通粉、多士、三文治、飲品等，不會產生太多廚餘，也能更專注做好味道。")
     }
   }
 </script>
 
 <style lang="less">
 @font-face {
-  font-family: '蒙纳繁版黑';
-  src: url("../static/fonts/蒙纳繁版黑.eot");
-  src: url("../static/fonts/蒙纳繁版黑.woff") format('woff'),
-  url("../static/fonts/蒙纳繁版黑.ttf") format('ttf'),
-  url("../static/fonts/蒙纳繁版黑.svg") format('svg');
+  font-family: 'CHei3HK';
+  font-display: swap;
+  src: url("../static/fonts/CHei3HK.eot");
+  src: url("../static/fonts/CHei3HK.woff") format('woff'),
+  url("../static/fonts/CHei3HK.ttf") format('ttf'),
+  url("../static/fonts/CHei3HK.svg") format('svg');
 }
 
 @font-face {
   font-family: 'PaintingWithChocolate';
+  font-display: swap;
   src: url("../static/fonts/Painting_With_Chocolate.eot");
   src: url("../static/fonts/Painting_With_Chocolate.woff") format('woff'),
   url("../static/fonts/Painting_With_Chocolate.ttf") format('ttf'),
@@ -40,14 +47,13 @@
 }
 
 body,html{
-  font-family: '蒙纳繁版黑', '微软雅黑', Helvetica, Arial, sans-serif;
+  font-family: 'CHei3HK', '微软雅黑', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: @fontColor;
   overflow-x: hidden;
   background-color: @bodyBg;
-  /*height: 100%;*/
 }
 
 a{
@@ -71,10 +77,16 @@ p{
     margin-bottom: 0.5rem;
   }
 }
-
+ /*body，html公共class*/
+ .bg{
+  height: 100%;
+}
 #body{
-  /*height: 100%;*/
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
+  position: relative;
+  height: 100%;
 }
 
 
@@ -170,7 +182,7 @@ p{
         font-size: 1.9rem;
       }
       @media (max-width: 640px){
-        font-size: 1.5rem;
+        font-size: 1.3rem;
       }
     }
   }
@@ -202,7 +214,7 @@ p{
       letter-spacing: -3.5px;
     }
     @media (max-width: 640px){
-      font-size: 3rem;
+      font-size: 2.8rem;
     }
   }
 }
@@ -301,27 +313,46 @@ p{
       footer
   - - - - - - - */
 .footer{
-  .container{
-    padding-top: 0 !important;
-    padding-bottom: 3rem !important;
-
-    @media (max-width: 768px){
-      padding-bottom: 2rem !important;
-    }
-    @media (max-width: 640px){
-      padding-bottom: 1rem !important;
-    }
-  }
-
-  svg{
-    transform-origin: right bottom;
-    transform: scale(0.8);
-  }
-
   small{
     @media (max-width: 640px){
       font-size: 50%;
     }
   }
 }
+/*about 公共*/
+#huaxingMenu,#aboutBox{
+    .box{
+      margin-right: 4%;
+      line-height: 1.3rem;
+      @media (min-width: 2000px) {
+        line-height: 2.4rem;
+        margin-top: 2rem;
+      }
+      @media (max-width: 1280px) {
+        p{
+          margin-bottom: 0.5rem;
+        }
+      }
+      @media (max-width: 1280px) and (min-height: 900px){
+        letter-spacing: 1.5px;
+      }
+      @media (max-width: 1024px)  and (min-height: 900px) {
+        line-height: 1.4rem;
+      }
+      @media (max-width: 320px) {
+        line-height: 1rem;
+      }
+
+    }
+    .footerBox{
+      position:absolute;
+      bottom: 4%;
+      left: 10%;
+      @media (max-width: 768px){
+        right: 6%;
+        left: unset;
+        bottom: 3%;
+      }
+    }
+  }
 </style>

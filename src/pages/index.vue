@@ -1,5 +1,6 @@
 <template>
   <div id="index">
+
     <!-- banner -->
     <div id="banner">
       <!-- banner 圖片 -->
@@ -7,7 +8,7 @@
         <img :src="banner" />
       </div>
       <!-- 文字 -->
-      <div class="font">
+      <div class="font wow fadeIn" data-wow-duration="1s">
         <div class="rect"></div>
         <div class="content justify-content-center">
           <div class="title"><span>華星冰室</span></div>
@@ -21,7 +22,7 @@
     <div id="about">
       <div class="container">
         <!-- 条形背景 -->
-        <div class="lineBg">
+        <div class="lineBg wow fadeIn" data-wow-duration="0.8s" data-wow-delay="0.8s">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -30,7 +31,7 @@
           </svg>
         </div>
         <!-- 盒子内容 -->
-        <div id="about_box" class="row">
+        <div id="about_box" class="row wow fadeIn" data-wow-duration="1s">
           <!-- 图片 -->
           <div class="media_img">
             <img :src="aboutImg"/>
@@ -48,7 +49,7 @@
             </div>
           </div>
           <!-- 查看更多 -->
-          <router-link to="" class="more RedMoreBtn">查 看更多</router-link>
+          <router-link to="/about" class="more RedMoreBtn wow fadeInUp"data-wow-duration="1s" data-wow-delay="0.8s">查 看更多</router-link>
         </div>
       </div>
     </div>
@@ -66,7 +67,7 @@
                   d="M0.500,719.952 L0.500,661.349 L50.500,711.349 L50.500,769.951 L0.500,719.952 ZM0.500,543.349 L50.500,593.349 L50.500,651.952 L0.500,601.952 L0.500,543.349 ZM0.500,425.349 L50.500,475.349 L50.500,533.951 L0.500,483.952 L0.500,425.349 ZM0.500,307.349 L50.500,357.349 L50.500,415.952 L0.500,365.952 L0.500,307.349 ZM0.500,247.952 L0.500,189.349 L50.500,239.349 L50.500,297.952 L6.676,254.128 L0.500,247.952 ZM0.500,71.349 L50.500,121.348 L50.500,179.952 L0.500,129.952 L0.500,71.349 ZM0.500,0.650 L50.500,0.650 L50.500,61.952 L0.500,11.952 L0.500,0.650 ZM50.500,829.348 L50.500,829.651 L0.500,829.651 L0.500,779.349 L50.500,829.348 Z"/>
           </svg>
         </div>
-        <div class="row">
+        <div class="row wow fadeIn" data-wow-duration="1s">
           <!-- 文字 -->
           <div class="col-lg-6 col-md-12 col-12">
             <div class="content">
@@ -82,7 +83,8 @@
           </div>
           <!-- 图片 -->
           <div id="map_box" class="col-md-12 col-12">
-            <div id="map"><!--<img src="@static/images/map.png"/>--></div>
+            <div id="map" v-if="!mapImg"></div>
+            <div id="map_defalut" v-if="mapImg"><img src="@static/images/map.png"/></div>
             <!-- 边框 -->
             <div class="rect_border">
               <div class="rect_border1"></div>
@@ -96,7 +98,7 @@
     <!-- news -->
     <div id="news">
       <div class="container">
-        <div id="news_box" class="d-flex">
+        <div id="news_box" class="d-flex wow fadeIn" data-wow-duration="1s">
           <!-- 内容 -->
           <div class="content_bg align-content-center">
             <div class="content text-lg-right text-left justify-content-start">
@@ -135,7 +137,6 @@
                 <div class="swiper-slide"><img src="@static/images/4homeslide.jpg" alt=""/></div>
                 <div class="swiper-slide"><img src="@static/images/5homeslide.jpg" alt=""/></div>
               </div>
-
             </div>
           </div>
           <!-- 边框 -->
@@ -150,10 +151,16 @@
       <!-- 条形背景 -->
       <div class="lineBg text-right">
         <svg
+          width="2116px" height="50px" viewBox="0 0 2116 50" version="1.1"
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink">
-          <path fill-rule="evenodd"  fill="rgb(18, 18, 18)"
-                d="M1232.698,-0.000 L1237.047,-0.000 L1237.047,4.348 L1232.698,-0.000 ZM1114.698,-0.000 L1173.302,-0.000 L1223.301,50.000 L1164.698,50.000 L1114.698,-0.000 ZM996.699,-0.000 L1055.301,-0.000 L1105.301,50.000 L1046.698,50.000 L996.699,-0.000 ZM878.402,-0.000 L937.302,-0.000 L987.301,50.000 L928.402,50.000 L878.402,-0.000 ZM762.698,-0.000 L819.005,-0.000 L819.110,0.105 L869.005,50.000 L812.698,50.000 L762.698,-0.000 ZM750.005,50.000 L694.698,50.000 L644.698,-0.000 L700.005,-0.000 L750.005,50.000 ZM526.698,-0.000 L585.302,-0.000 L635.301,50.000 L576.698,50.000 L526.698,-0.000 ZM408.699,-0.000 L467.302,-0.000 L517.301,50.000 L458.698,50.000 L408.699,-0.000 ZM307.928,17.229 L290.699,-0.000 L349.302,-0.000 L399.301,50.000 L340.699,50.000 L307.928,17.229 ZM172.699,-0.000 L231.302,-0.000 L281.301,50.000 L222.698,50.000 L172.699,-0.000 ZM54.699,-0.000 L113.301,-0.000 L113.406,0.105 L163.301,50.000 L104.698,50.000 L54.699,-0.000 ZM-0.000,4.698 L45.302,50.000 L-0.000,50.000 L-0.000,4.698 Z"/>
+          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g transform="translate(-100.000000, -5444.000000)" fill="#121212" fill-rule="nonzero">
+              <g transform="translate(0.000000, 4320.000000)">
+                <path d="M376.301,1124 L426.301,1174 L373,1174 L373,1124 L376.301,1124 Z M494.301,1124 L494.406782,1124.10527 L544.302,1174 L485.698,1174 L435.697,1124 L494.301,1124 Z M612.301,1124 L662.302,1174 L603.698,1174 L553.698,1124 L612.301,1124 Z M1318.301,1124 L1368.302,1174 L1309.402,1174 L1259.401,1124 L1318.301,1124 Z M730.301,1124 L780.302,1174 L721.698,1174 L671.697,1124 L730.301,1124 Z M1436.301,1124 L1486.302,1174 L1427.698,1174 L1377.697,1124 L1436.301,1124 Z M1554.301,1124 L1604.302,1174 L1545.698,1174 L1495.697,1124 L1554.301,1124 Z M848.301,1124 L898.302,1174 L839.698,1174 L789.697,1124 L848.301,1124 Z M1672.301,1124 L1722.302,1174 L1663.698,1174 L1613.697,1124 L1672.301,1124 Z M1790.301,1124 L1840.302,1174 L1781.698,1174 L1731.697,1124 L1790.301,1124 Z M1908.301,1124 L1958.302,1174 L1899.698,1174 L1849.697,1124 L1908.301,1124 Z M2024.301,1124 L2074.302,1174 L2017.698,1174 L1967.697,1124 L2024.301,1124 Z M2142.301,1124 L2192.302,1174 L2133.698,1174 L2083.697,1124 L2142.301,1124 Z M2260.301,1124 L2310.302,1174 L2251.698,1174 L2201.697,1124 L2260.301,1124 Z M2378.301,1124 L2428.302,1174 L2369.698,1174 L2319.697,1124 L2378.301,1124 Z M2489,1124 L2489,1174 L2487.698,1174 L2437.697,1124 L2489,1124 Z M966.301,1124 L1016.302,1174 L957.698,1174 L907.697,1124 L966.301,1124 Z M1084.301,1124 L1134.302,1174 L1075.698,1174 L1025.697,1124 L1084.301,1124 Z M1200.005,1124 L1250.005,1174 L1193.698,1174 L1143.697,1124 L1200.005,1124 Z" id="黑色條紋"></path>
+              </g>
+            </g>
+          </g>
         </svg>
       </div>
     </div>
@@ -161,7 +168,7 @@
     <!-- menu -->
     <div id="menu">
       <div class="container">
-        <div class="row">
+        <div class="row wow fadeIn" data-wow-duration="1s">
           <!-- 图片 -->
           <div class="media_img">
             <div class="box1 d-flex text-left">
@@ -203,7 +210,7 @@
             </div>
           </div>
           <!-- 查看更多 -->
-          <router-link to="" class="more BlackMoreBtn">查 看更多</router-link>
+          <router-link to="/menu" class="more BlackMoreBtn">查 看更多</router-link>
         </div>
       </div>
     </div>
@@ -246,6 +253,7 @@
 
 
 <script>
+    import { WOW } from 'wowjs';
     import  bannerSrc from "@static/images/banner.png"
     import  bannerSrc_mobile from "@static/images/mobile_pic.png"
 
@@ -253,6 +261,7 @@
     import  aboutSrc_mobile from "@static/images/mobile_about.png"
 
     import Swiper from 'swiper';
+
 
     export default {
       data(){
@@ -388,6 +397,7 @@
           windowHeight: 0,          // 窗口高度
           banner: bannerSrc,        // 首页Banner
           aboutImg: aboutSrc,       // 关于华星图片
+          mapImg: 0,                // 地图加载不出来时的图片
           BtnStatus: false          // 返回顶部按钮状态
         }
       },
@@ -397,31 +407,35 @@
          */
         init() {
           // 实例化地图
-          var map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 17, //地图空间
-            center: this.beaches[0].position, //初始化定位,
-            styles: this.mapStyle
-          });
-          // 点击地图和卫星图像的控件时
-          map.addListener("maptypeid_changed", () => {
-            if (map.mapTypeId == "hybrid") {
-              map.setOptions({
-                styles: this.changeStyle(
-                  "#666666",
-                  "#343434"
-                )
-              });
-            } else {
-              map.setOptions({
-                styles: this.changeStyle(
-                  "#333333",
-                  "#666666",
-                )
-              });
-            }
-          });
-          // 配置地图
-          this.setMarker(map);
+          if(window.google){
+            var map = new google.maps.Map(document.getElementById("map"), {
+              zoom: 17, //地图空间
+              center: this.beaches[0].position, //初始化定位,
+              styles: this.mapStyle
+            });
+            // 点击地图和卫星图像的控件时
+            map.addListener("maptypeid_changed", () => {
+              if (map.mapTypeId == "hybrid") {
+                map.setOptions({
+                  styles: this.changeStyle(
+                    "#666666",
+                    "#343434"
+                  )
+                });
+              } else {
+                map.setOptions({
+                  styles: this.changeStyle(
+                    "#333333",
+                    "#666666",
+                  )
+                });
+              }
+            });
+            // 配置地图
+            this.setMarker(map);
+          }else{
+            this.mapImg = 1     // 如果google加载失效显示图片
+          }
         },
 
         /**
@@ -486,7 +500,7 @@
          *  返回顶部
          */
         backToTop(){
-          this.scrollAnimate(0, 700);
+          this.scrollAnimate(0, 500);
         },
 
         /**
@@ -501,10 +515,10 @@
         }
       },
       created() {
+          // this.$router.go(0)
         this.windowWidth = window.innerWidth;
         this.windowHeight = window.innerHeight;
-        if(this.windowWidth<1000){
-          console.log(1)
+        if(this.windowWidth<1024){
           this.banner = bannerSrc_mobile;
           this.aboutImg = aboutSrc_mobile;
         }
@@ -536,8 +550,14 @@
             },
           },
         });
-        swiper.params.speed = 380 // 设置轮播速度
+        swiper.params.speed = 380; // 设置轮播速度
 
+        new WOW({
+          live: false,
+          callback:     function(box) {
+            $(box).find('.rect_border').addClass('animate_border')        // 滚动时给border添加className
+          },
+        }).init();      // wow
       },
       destroyed () {
         window.removeEventListener('scroll', this.handleScroll); // 离开页面 关闭监听 不然会报错
@@ -545,8 +565,10 @@
     }
 </script>
 
-
 <style scoped lang="less">
+  #index{
+    height: auto;
+  }
   #index:before{
     content: '';
     position: absolute;
@@ -561,7 +583,7 @@
       @media (min-width: 2000px){
         width: calc(100% - @navBrandWidth_2k);
       }
-      @media (max-width: 768px){
+      @media (max-width: 1000px){
         width: 60%;
       }
       @media (max-width: 640px){
@@ -590,7 +612,7 @@
         height: 55px;
         line-height: 55px;
       }
-      @media (max-width: 768px){
+      @media (max-width: 1000px){
         width: 200px;
         height: 50px;
         line-height: 50px;
@@ -612,7 +634,7 @@
       margin-left: 10px;
       background: @bgWhite;
 
-      @media (max-width: 768px){
+      @media (max-width: 1000px){
         width: 28px;
         height: 1px;
         top: 30px;
@@ -630,7 +652,7 @@
     background: url('../../static/images/buttonBg.png') @moreRedBg 30% 50%;
     background-size: auto 120px;
 
-    @media (max-width: 768px){
+    @media (max-width: 1000px){
       background-size: auto 100px;
     }
     @media (max-width: 640px){
@@ -655,7 +677,11 @@
       @media (min-width: 2000px){
         padding-bottom: 20rem;
       }
-      @media (max-width: 768px){
+      @media (max-width: 1440px){
+        padding-top: 10rem;
+        padding-bottom: 10rem;
+      }
+      @media (max-width: 1000px){
         padding-top: 7rem;
         padding-bottom: 7rem;
       }
@@ -692,9 +718,9 @@
       left: 0px;
       width: @border;
       height: 0px;
-      animation: drawHoriLineLeft .2s ease-in-out 1.2s forwards;
+      /*animation: drawHoriLineLeft .2s ease-in-out 1.2s forwards;*/
 
-      @media (max-width: 768px){
+      @media (max-width: 1024px){
         width: @border_sm;
       }
       @media (max-width: 640px){
@@ -707,8 +733,8 @@
       right: 0px;
       width: 0px;
       height: @border;
-      animation: drawHoriLineTop .2s ease-in-out 1.2s forwards;
-      @media (max-width: 768px){
+      /*animation: drawHoriLineTop .2s ease-in-out 1.2s forwards;*/
+      @media (max-width: 1024px){
         height: @border_sm;
       }
       @media (max-width: 640px){
@@ -721,8 +747,8 @@
       left: 0px;
       width: 0px;
       height: @border;
-      animation: drawHoriLineBottom .2s ease-in-out 1.2s forwards;
-      @media (max-width: 768px){
+      /*animation: drawHoriLineBottom .2s ease-in-out 1.2s forwards;*/
+      @media (max-width: 1024px){
         height: @border_sm;
       }
       @media (max-width: 640px){
@@ -735,8 +761,8 @@
       right: 0px;
       width: @border;
       height: 0px;
-      animation: drawHoriLineRight .2s ease-in-out 1.2s forwards;
-      @media (max-width: 768px){
+      /*animation: drawHoriLineRight .2s ease-in-out 1.2s forwards;*/
+      @media (max-width: 1024px){
         width: @border_sm;
       }
       @media (max-width: 640px){
@@ -744,6 +770,24 @@
       }
     }
 
+  }
+
+  .animate_border {
+    .rect_border1::before {
+      animation: drawHoriLineLeft .2s ease-in-out 0.7s forwards;
+    }
+
+    .rect_border1::after {
+      animation: drawHoriLineTop .2s ease-in-out 0.7s forwards;
+    }
+
+    .rect_border2::before {
+      animation: drawHoriLineBottom .2s ease-in-out 0.7s forwards;
+    }
+
+    .rect_border2::after {
+      animation: drawHoriLineRight .2s ease-in-out 0.7s forwards;
+    }
   }
 
   .keyframes(all,drawHoriLineLeft,{
@@ -799,9 +843,11 @@
           width: 45%;
           height: 55%;
         }
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
           width: 80%;
           height: 45%;
+        }
+        @media (max-width: 1000px) {
           right: 2%;
         }
         @media (max-width: 640px) {
@@ -815,7 +861,7 @@
         display: flex;
         background: fade(@bgRed, 70%);
 
-        @media (max-width: 768px){
+        @media (max-width: 1000px){
           width: 12%;
         }
       }
@@ -844,7 +890,7 @@
                 line-height: 50px;
                 font-size: 1.7rem;
               }
-              @media (max-width: 768px){
+              @media (max-width: 1024px){
                 font-size: 2rem;
               }
               @media (max-width: 640px) {
@@ -867,12 +913,12 @@
               font-size: 0.9rem;
             }
 
-            @media (max-width: 768px){
-              font-size: 1rem;
-              line-height: 25px;
+            @media (max-width: 1024px){
+              font-size: 1.3rem;
+              line-height: 26px;
             }
 
-            @media (max-width: 768px){
+            @media (max-width: 1000px){
               font-size: 0.8rem;
               line-height: 20px;
             }
@@ -890,7 +936,7 @@
       @media (min-width: 2000px){
         height: calc(100vh - @navHeight_2k);
       }
-      @media (max-width: 768px) {
+      @media (max-width: 1000px) {
         height: calc(100vh - @navHeight_md);
       }
       @media (max-width: 700px) {
@@ -910,7 +956,7 @@
     .lineBg{
       left: @aboutLeft;
 
-      @media (max-width: 768px){
+      @media (max-width: 1000px){
         left: unset;
         right: @aboutLeft * 2;
       }
@@ -919,7 +965,7 @@
       }
 
       svg{
-        @media (max-width: 768px){
+        @media (max-width: 1000px){
           transform: scale(0.45, 0.7);
           transform-origin: right top;
         }
@@ -951,7 +997,7 @@
           @media (min-width: 2000px){
             width: @aboutImgWidth_2k;
           }
-          @media (max-width: 768px){
+          @media (max-width: 1000px){
             width: 77%;
             left: unset;
             right: @aboutLeft;
@@ -969,7 +1015,7 @@
           @media (min-width: 2000px){
             margin-left: calc(@aboutImgWidth_2k - @aboutImgWidth_2k / 4);
           }
-          @media (max-width: 768px){
+          @media (max-width: 1000px){
             margin-left: 10%;
             margin-top: 15%;
           }
@@ -995,7 +1041,7 @@
               padding-bottom: @aboutContentPadTop;
             }
 
-            @media (max-width: 768px){
+            @media (max-width: 1000px){
               padding: 30% 10% 20% 10%;
             }
           }
@@ -1008,7 +1054,7 @@
       bottom: 5%;
       right: -4%;
 
-      @media (max-width: 768px){
+      @media (max-width: 1000px){
         bottom: 3%;
         right: @aboutLeft * 2;
       }
@@ -1025,12 +1071,14 @@
   #store{
     .lineBg{
       svg{
-        @media (max-width: 768px){
+        @media (max-width: 1024px){
+          margin-top: 5%;
+        }
+        @media (max-width: 1000px){
           width: 55px;
           height: 50%;
           transform-origin: right top;
           margin-right: 2%;
-          margin-top: 5%;
         }
         @media (max-width: 640px){
           height: 80%;
@@ -1046,7 +1094,7 @@
       width: 55%;
       padding: @mapPadTop - 1% @mapPadLeft - 1% 0 0;
 
-      @media (max-width: 768px){
+      @media (max-width: 1000px){
         position: relative;
         padding: 0 0 @mapPadLeft @mapPadTop;
       }
@@ -1055,13 +1103,19 @@
         padding-left: @mapPadTop * 2;
       }
 
-      #map{
-        /*transform: translateY(15%);*/
+      #map,#map_defalut{
         position: relative;
         z-index: 1;
         width: 100%;
-        height: 55vh;
         overflow: hidden;
+
+        @media (max-width: 640px){
+          width: 95%;
+        }
+      }
+
+      #map{
+        height: 55vh;
 
         @media (min-width: 2000px){
           height: 50vh;
@@ -1069,13 +1123,18 @@
         @media (max-width: 1680px){
           height: 50vh;
         }
-        @media (max-width: 768px){
+        @media (max-width: 1024px){
+          height: 35vh;
+        }
+        @media (max-width: 1000px){
           height: 45vh;
         }
         @media (max-width: 640px){
           height: 35vh;
         }
+      }
 
+      #map_defalut{
         img{
           width: 100%;
         }
@@ -1089,7 +1148,10 @@
     .content{
       padding: 5% 15%;
 
-      @media (max-width: 768px){
+      @media (max-width: 1024px){
+        padding: 0 @mapPadTop 0 @mapPadTop + 3%;
+      }
+      @media (max-width: 1000px){
         padding: 0 @mapPadTop + 3% 0 @mapPadTop;
       }
       @media (max-width: 640px){
@@ -1105,11 +1167,11 @@
         @media (min-width: 2000px){
           font-size: 1.7rem;
         }
-        @media (max-width: 768px){
+        @media (max-width: 1000px){
           font-size: 1.4rem;
         }
         @media (max-width: 640px){
-          font-size: 1.1rem;
+          font-size: 1rem;
         }
 
         &:before{
@@ -1123,7 +1185,7 @@
           @media (min-width: 2000px){
             font-size: 1.7rem;
           }
-          @media (max-width: 768px){
+          @media (max-width: 1000px){
             font-size: 1.7rem;
           }
           @media (max-width: 640px){
@@ -1140,11 +1202,11 @@
         @media (min-width: 2000px){
           font-size: 1.6rem;
         }
-        @media (max-width: 768px){
+        @media (max-width: 1000px){
           font-size: 1.4rem;
         }
         @media (max-width: 640px){
-          font-size: 1.1rem;
+          font-size: 1rem;
         }
       }
     }
@@ -1155,7 +1217,7 @@
       right: 0;
       top: 0;
 
-      @media (max-width: 768px){
+      @media (max-width: 1000px){
         width: 86%;
         right: unset;
         top: unset;
@@ -1178,47 +1240,37 @@
     position: relative;
 
     .container{
-      padding-bottom: 12rem;
+      padding-bottom: @newsPadBottom;
 
       @media (max-width: 640px){
-        padding-bottom: 10rem;
+        padding-bottom: 7rem;
       }
     }
 
     .lineBg{
       height: auto;
       right: 0;
-      bottom: 0;
+      bottom: @newsPadBottom;
       left: unset;
 
-      svg{
-        width: 65%;
-        transform-origin: right bottom;
-        transform: scale(0.7);
-
-        @media screen{
-          @media (min-width: 2000px){
-            transform: scale(1);
-          }
-          @media (max-width: 1440px){
-            width: 85%;
-            transform: scale(0.5);
-          }
-          @media (max-width: 768px){
-            height: 35px;
-            width: 100%;
-            transform: scale(0.65, 0.5);
-          }
-          @media (max-width: 640px){
-            transform: scale(0.65, 0.4);
-          }
-        }
-      }
-      @media (max-width: 768px){
-        bottom: 10%;
+      @media (max-width: 1000px){
+        bottom: 8%;
       }
       @media (max-width: 640px){
-        bottom: 12%;
+        bottom: 9%;
+      }
+
+      svg{
+        transform-origin: right bottom;
+        @media (min-width: 2000px){
+          transform: scale(0.7);
+        }
+        @media (max-width: 1000px){
+          transform: scale(0.7);
+        }
+        @media (max-width: 640px){
+          transform: scale(1) translateX(10%);
+        }
       }
     }
 
@@ -1238,9 +1290,14 @@
           @media (min-width: 2000px){
             width: 60%;
           }
-
-          @media (max-width: 768px){
+          @media (max-width: 1024px){
+            width: 53%;
+            padding-left: 4%;
+            top: 5%;
+          }
+          @media (max-width: 1000px){
             width: 65%;
+            top: 0;
           }
         }
 
@@ -1254,6 +1311,14 @@
 
           @media (max-width: 1440px){
             transform: translateX(-@newsMarTop - 2%);
+          }
+
+          @media (max-width: 1024px){
+            transform: translateX(-@newsMarTop - 7%);
+          }
+
+          @media (max-width: 1000px){
+            transform: translateX(-@newsMarTop);
           }
         }
 
@@ -1295,22 +1360,8 @@
         flex: 0 0 50%;
         max-width: 50%;
 
-        .content{
-          color: @linkColor;
-          display: flex;
-          flex-direction: column;
-          padding: @newsPadTop 15% @newsPadTop+5% 8%;
-
-          @media (max-width: 768px){
-            padding: 15% 12%;
-          }
-        }
-
         @media screen{
-          @media (max-width: 1440px){
-            margin-top: 40px;
-          }
-          @media (max-width: 768px){
+          @media (max-width: 1000px){
             flex: 85%;
             max-width: 85%;
             margin-top: @newsMarTop_md;
@@ -1318,6 +1369,17 @@
           }
           @media (max-width: 640px){
             margin-top: @newsMarTop_sm;
+          }
+        }
+
+        .content{
+          color: @linkColor;
+          display: flex;
+          flex-direction: column;
+          padding: @newsPadTop 15% @newsPadTop+5% 8%;
+
+          @media (max-width: 1000px){
+            padding: 15% 12%;
           }
         }
       }
@@ -1340,7 +1402,7 @@
       right: 0;
       top: @newsMarTop;
 
-      @media (max-width: 768px){
+      @media (max-width: 1000px){
         width: 75%;
         height: @newsBorderHeight - 5%;
         top: @newsMarTop_md - 5%;
@@ -1360,7 +1422,7 @@
         font-size: 2rem;
         transform: translate(-3px, 7px);
 
-        @media (max-width: 768px) {
+        @media (max-width: 1000px) {
           font-size: 1.6rem;
         }
         @media (max-width: 640px) {
@@ -1373,7 +1435,7 @@
         font-size: 1.2rem;
         transform: translateY(3px);
 
-        @media (max-width: 768px) {
+        @media (max-width: 1000px) {
           font-size: 0.9rem;
         }
         @media (max-width: 640px) {
@@ -1381,11 +1443,11 @@
         }
       }
 
-      @media (max-width: 768px){
+      @media (max-width: 1000px){
         padding: 10px 15px;
       }
       @media (max-width: 640px){
-        padding: 7px;
+        padding: 10px;
       }
     }
 
@@ -1404,33 +1466,56 @@
       left: @menuPadTop + 3%;
       top: @menuPadTop + 5%;
 
+      @media (max-width: 1440px){
+        top: @menuPadTop * 2;
+      }
+
+      @media (max-width: 1024px){
+        top: @menuPadTop * 2.5;
+      }
+
+      @media (max-width: 1000px){
+        top: @menuPadTop * 2 + 3%;
+        left: 13%;
+      }
+
       svg{
         width: 350px;
         height: 350px;
 
-        @media (max-width: 768px){
+        @media (max-width: 1000px){
           transform: scale(0.55);
         }
         @media (max-width: 640px){
           transform: scale(0.3);
         }
       }
-
-      @media (max-width: 1440px){
-        top: @menuPadTop * 2;
-      }
-
-      @media (max-width: 768px){
-        top: @menuPadTop * 2 + 3%;
-        left: 13%;
-      }
-
     }
 
     .media_img{
       background: url('../../static/images/mengBg.png') no-repeat;
       background-size: contain;
       padding: @menuPadTop 5% @menuPadBottom 5%;
+
+      @media (max-width: 1440px){
+        padding-top: @menuPadTop + 5%;
+      }
+
+      @media (max-width: 1024px){
+        padding-top: @menuPadTop * 2;
+      }
+
+      @media (max-width: 1000px){
+        background-position: (-@menubgPos / 2) bottom;
+        background-size: auto @menubgPos;
+        padding: 30% 5% 5% 5%;
+      }
+
+      @media (max-width: 640px){
+        background-position: 200% bottom;
+        background-size: auto @menubgPos;
+        padding: 45% 5% 5% 3%;
+      }
 
       .box1,.box2,.box3,.box4{
         img{
@@ -1451,7 +1536,7 @@
               width: 240px;
             }
 
-            @media (max-width: 768px){
+            @media (max-width: 1024px){
               width: 200px;
             }
 
@@ -1460,22 +1545,6 @@
             }
           }
         }
-      }
-
-      @media (max-width: 1440px){
-        padding-top: @menuPadTop + 5%;
-      }
-
-      @media (max-width: 768px){
-        background-position: (-@menubgPos / 2) bottom;
-        background-size: auto @menubgPos;
-        padding: 30% 5% 5% 5%;
-      }
-
-      @media (max-width: 768px){
-        background-position: 200% bottom;
-        background-size: auto @menubgPos;
-        padding: 45% 5% 5% 3%;
       }
     }
 
@@ -1486,7 +1555,7 @@
         padding-right: 0;
 
         .title2{
-          @media (max-width: 768px){
+          @media (max-width: 1000px){
             transform: translateY(0);
             padding: 5% 0;
           }
@@ -1499,7 +1568,7 @@
       bottom: @menuPadBottom * 2;
       right: 0;
 
-      @media (max-width: 768px){
+      @media (max-width: 1000px){
         bottom: @menuPadBottom;
       }
       @media (max-width: 640px){
@@ -1513,6 +1582,23 @@
       index_footer
   - - - - - - -  */
   #home_footer{
+     .container{
+      padding-top: 0 !important;
+      padding-bottom: 3rem !important;
+
+      @media (max-width: 768px){
+        padding-bottom: 2rem !important;
+      }
+      @media (max-width: 640px){
+        padding-bottom: 1rem !important;
+      }
+    }
+
+    svg{
+      transform-origin: right bottom;
+      transform: scale(0.8);
+    }
+
     .friendLink{
       margin:0 10px 15px 0;
     }
@@ -1554,7 +1640,7 @@
     transform: scale(0.55);
     z-index: 5;
 
-    @media (max-width: 768px){
+    @media (max-width: 1000px){
       transform: scale(0.4);
       right: 0px;
     }

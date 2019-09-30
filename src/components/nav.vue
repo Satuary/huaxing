@@ -1,18 +1,18 @@
 <template>
-  <div id="nav">
+  <div id="nav" :class="navActiveId===0? 'index_page':''">
     <nav class="navbar navbar-expand-lg d-flex">
       <!-- Brand -->
-      <div class="navbar-brand "><router-link class="logo" to=""><img src="@static/images/logo.png"/></router-link></div>
+      <div class="navbar-brand "><router-link class="logo" to="/"><img src="@static/images/logo.png"/></router-link></div>
 
       <!-- Toggler/collapsibe Button -->
-      <button @click="navToggle" :class="[{'open': navStatus},' navbar-toggler']" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <button @click="navToggle" :class="[{'open': navStatus},'navbar-toggler']" type="button">
         <span></span>
         <span></span>
         <span></span>
       </button>
 
       <!-- Navbar links -->
-      <div class="justify-content-end collapse navbar-collapse" id="collapsibleNavbar" v-if="navStatus">
+      <div :class="[{'open': navStatus},'justify-content-end collapse navbar-collapse']">
         <ul class="navbar-nav">
           <li class="nav-item" v-for="(item, key) in navList">
             <span :class="[{'active' : navActiveId == key},'d-inline-block']" @click="gotoPage(key)">{{item.name}}</span>
@@ -40,7 +40,9 @@
 export default {
   data(){
     return{
-      navStatus:false,       // 导航打开关闭状态class
+      windowWidth: 0,         // 窗口宽度
+      indexFlag: 1,           // 监测是否首页
+      navStatus: false,       // 导航打开关闭状态class
       navList: [
         {
           id: 0,
@@ -50,18 +52,32 @@ export default {
         {
           id: 1,
           name: '關於華星',
-          path: 'about'
+          path: '/about'
         },
         {
           id: 3,
           name: '華星菜單',
-          path: 'menu'
+          path: '/menu'
         }
-      ],        // 导航栏数据
-      navActiveId: 0         // 当前导航栏ID
+      ],         // 导航栏数据
+      navActiveId: -1         // 当前导航栏ID
+    }
+  },
+  watch:{
+    $route(to,from){
+      this.changeNavStyle(to.path)
     }
   },
   methods:{
+    /**
+     *  改变导航栏状态样式
+     */
+    changeNavStyle(path){
+      var that = this;
+      this.navList.forEach(function (item, index) {
+        if(item.path == path) that.navActiveId = index
+      })
+    },
     /**
      *  改变MENU菜单按钮状态
      */
@@ -72,12 +88,17 @@ export default {
      * 跳转页面 and 关闭菜单
      */
     gotoPage(index){
-      this.navActiveId = index;             // 存储当前选择导航栏索引
-      let path = this.navList[index].path;  // 获取跳转链接
-      this.navToggle();                     // 关闭菜单
-      this.$router.push({path: path});      // 跳转页面
+      this.navActiveId = index;                                 // 存储当前选择导航栏索引
+      let path = this.navList[index].path;                      // 获取跳转链接
+      if(this.windowWidth < 1280)      this.navToggle();        // 手机时才执行关闭菜单
+      this.$router.push({path: path});                          // 跳转页面
     }
-  }
+  },
+  mounted() {
+    this.windowWidth = window.innerWidth;                       // 获取屏幕宽度
+    let route = this.$route;                                    // 根据路由改变导航栏样式状态
+    this.changeNavStyle(route.path);
+  },
 }
 </script>
 
@@ -85,6 +106,9 @@ export default {
 <style scoped lang="less">
   #nav{
     height: @navHeight;
+    position: relative;
+    z-index: 5;
+
     @media (max-width: 1440px){
       height: @navHeight_md;
     }
@@ -101,7 +125,7 @@ export default {
         height: 3px;
         margin-bottom: 5px;
         position: relative;
-        background: @linkColor;
+        background: @fontColor;
         border-radius: 3px;
 
         z-index: 1;
@@ -133,7 +157,7 @@ export default {
         transform: rotate(45deg) translate(-2px, -1px);
         background: @fontColor;
 
-        @media (max-width: 768px) {
+        @media (max-width: 1000px) {
           transform: rotate(45deg) translate(2px, 2px);
         }
 
@@ -145,7 +169,7 @@ export default {
         &:nth-of-type(3){
           transform: rotate(-45deg) translate(0, -1px);
 
-          @media (max-width: 768px) {
+          @media (max-width: 1000px) {
             transform: rotate(-45deg) translate(-2px, 3px);
           }
         }
@@ -153,15 +177,15 @@ export default {
     }
 
     .navbar-collapse {
-      position: relative;
-      z-index: 2;
-
-      @media (max-width: 768px) {
+      @media (max-width: 1000px) {
         position: absolute;
         right: 0;
         top: @navHeight_md;
         background: @bgWhite;
+        transform: translateY(-10%);
+        opacity: 0;
         width: 32%;
+        transition: .3s;
       }
 
       @media (max-width: 640px) {
@@ -169,14 +193,36 @@ export default {
       }
     }
 
+    .navbar-collapse.open{
+      animation: showNav .25s ease-in forwards;
+      display: block;
+    }
+
+    .keyframes(all,showNav,{
+      from{transform: translateY(-15%); opacity: 0;}
+      to{transform: translateY(0%); opacity: 1;}
+    });
+
     .navbar{
       height: 100%;
+
+      @media screen{
+        @media (min-width: 2000px){
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
+
+        @media (max-width: 1000px){
+          padding-left: 5%;
+          padding-right: 5%;
+        }
+      }
 
       .navbar-brand{
         width: @navBrandWidth;
         margin-right: 0;
 
-        @media (max-width: 768px){
+        @media (max-width: 1000px){
           width: 33%;
         }
 
@@ -200,7 +246,7 @@ export default {
               width: 60%;
               transform: translateX(-20px);
             }
-            @media (max-width: 768px){
+            @media (max-width: 1000px){
               width: 100%;
               transform: translateX(0);
             }
@@ -234,7 +280,7 @@ export default {
               width: @navItemWidth_sm;
             }
 
-            @media (max-width: 768px) {
+            @media (max-width: 1000px) {
               width: 100%;
               display: flex;
             }
@@ -243,15 +289,15 @@ export default {
 
 
           span{
-            color: fade(@linkColor, 70%);
+            color: fade(@fontColor, 70%);
             position: relative;
             padding: 0 10%;
             overflow: hidden;
             transition: .1s;
             cursor: pointer;
 
-            @media (max-width: 768px) {
-              color: @fontColor;
+            @media (max-width: 1000px) {
+              color: @fontColor !important;
               width: 100%;
               padding: 12px 5px;
             }
@@ -265,10 +311,10 @@ export default {
               left: -100%;
               /*opacity: 0;*/
               width: 100%;
-              background: @fontColor;
+              background: @titleLine;
               z-index: -1;
 
-              @media (max-width: 768px) {
+              @media (max-width: 1000px) {
                 display: none;
               }
             }
@@ -287,11 +333,12 @@ export default {
           }
 
           span.active, span:hover{
-            color: fade(@linkColor, 100%);
+            color: fade(@fontColor, 100%);
             transform: scale(1.1);
 
-            @media (max-width: 768px) {
-              background: fade(@fontColor, 95%);
+            @media (max-width: 1000px) {
+              color: @linkColor !important;
+              background: fade(@fontColor, 95%) !important;;
               transform: scale(1);
             }
 
@@ -299,11 +346,6 @@ export default {
               /*opacity: 1;*/
               left: 0;
             }
-          }
-        }
-        .nav-lang{
-          span{
-            cursor: pointer;
           }
         }
       }
@@ -314,13 +356,13 @@ export default {
         margin:0 50px;
 
         .cls-1{
-          fill: #fff;
+          fill: @fontColor;
         }
 
         a{
           margin-right: 15px;
 
-          @media (max-width: 768px) {
+          @media (max-width: 1000px) {
             margin-right: 20px;
           }
         }
@@ -329,7 +371,7 @@ export default {
           transform: scale(1.5);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1000px) {
           position: absolute;
           right: 15%;
           margin: 0;
@@ -340,25 +382,13 @@ export default {
           transform: scale(1);
         }
       }
-
-      @media screen{
-        @media (min-width: 2000px){
-          padding-left: 2rem;
-          padding-right: 2rem;
-        }
-
-        @media (max-width: 768px){
-          padding-left: 5%;
-          padding-right: 5%;
-        }
-      }
     }
 
     @media screen{
       @media (min-width: 2000px){
         height: @navHeight_2k;
       }
-      @media (max-width: 768px){
+      @media (max-width: 1000px){
         height: @navHeight_md;
       }
       @media (max-width: 700px){
@@ -367,4 +397,32 @@ export default {
     }
   }
 
+  /* 首页导航栏样式*/
+  #nav.index_page{
+    .navbar-toggler span{
+      background: @linkColor;
+    }
+    .navbar {
+      .navbar-nav{
+        .nav-item{
+          span{
+            color: fade(@linkColor, 70%);
+
+            &:before, &:after{
+              background: @fontColor;
+            }
+          }
+          span.active, span:hover {
+            color: fade(@linkColor, 100%);
+          }
+        }
+      }
+
+      .friendLink{
+        .cls-1{
+          fill: @linkColor;
+        }
+      }
+    }
+  }
 </style>
